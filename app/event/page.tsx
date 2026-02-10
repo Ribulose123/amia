@@ -1,11 +1,11 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { HomePage } from "./pages/HomePage"
+import { EventNightPage } from "../pages/EventNightPage"
 
-export default function Home() {
+export default function Event() {
   const router = useRouter()
-  return <HomePage onNavigate={(page: string) => {
+  return <EventNightPage onNavigate={(page: string) => {
     const routes: Record<string, string> = {
       home: "/",
       categories: "/categories",
@@ -19,3 +19,4 @@ export default function Home() {
     router.push(routes[page] || "/")
   }} />
 }
+

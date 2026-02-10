@@ -1,11 +1,11 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { HomePage } from "./pages/HomePage"
+import { NewsPage } from "../pages/NewsPage"
 
-export default function Home() {
+export default function News() {
   const router = useRouter()
-  return <HomePage onNavigate={(page: string) => {
+  return <NewsPage onNavigate={(page: string) => {
     const routes: Record<string, string> = {
       home: "/",
       categories: "/categories",
@@ -19,3 +19,4 @@ export default function Home() {
     router.push(routes[page] || "/")
   }} />
 }
+
