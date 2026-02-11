@@ -1,15 +1,20 @@
+'use client';
+
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { Calendar, Bell, Play, ArrowRight, Star, Trophy, Users, Info, X } from 'lucide-react';
 import { useLanguage } from '@/app/context/LanguageContext';
 import { MusicPlatformModal } from '@/components/MusicPlatformModal';
 import { VideoPlayerModal } from '@/components/VideoPlayerModal';
+import { useNavigation } from '@/src/lib/useNavigation';
+import { type Locale } from '@/src/config/i18n';
 
 interface HomePageProps {
-  onNavigate: (page: string) => void;
+  lang: Locale;
 }
 
-export function HomePage({ onNavigate }: HomePageProps) {
+export function HomePage({ lang }: HomePageProps) {
+  const onNavigate = useNavigation(lang);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [platformModalOpen, setPlatformModalOpen] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState<{ artist: string; track?: string } | null>(null);

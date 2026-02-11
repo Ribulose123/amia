@@ -1,8 +1,12 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight } from 'lucide-react';
+import { useNavigation } from '@/src/lib/useNavigation';
+import { type Locale } from '@/src/config/i18n';
 
 interface NewsPageProps {
-  onNavigate: (page: string) => void;
+  lang: Locale;
 }
 
 const newsArticles = [
@@ -56,7 +60,8 @@ const newsArticles = [
   },
 ];
 
-export function NewsPage({ onNavigate }: NewsPageProps) {
+export function NewsPage({ lang }: NewsPageProps) {
+  const onNavigate = useNavigation(lang);
   return (
     <div className="min-h-screen dark:bg-black light:bg-white">
       {/* Hero Section */}

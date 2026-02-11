@@ -1,22 +1,7 @@
-"use client"
-
-import { useRouter } from "next/navigation"
-import { HallOfFamePage } from "../pages/HallOfFamePage"
+import { redirect } from "next/navigation"
+import { i18n } from "@/src/config/i18n"
 
 export default function HallOfFame() {
-  const router = useRouter()
-  return <HallOfFamePage onNavigate={(page: string) => {
-    const routes: Record<string, string> = {
-      home: "/",
-      categories: "/categories",
-      nominees: "/nominees",
-      winners: "/winners",
-      "hall-of-fame": "/hall-of-fame",
-      event: "/event",
-      news: "/news",
-      about: "/about",
-    }
-    router.push(routes[page] || "/")
-  }} />
+  redirect(`/${i18n.defaultLocale}/hall-of-fame`)
 }
 

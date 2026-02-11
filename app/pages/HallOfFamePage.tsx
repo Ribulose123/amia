@@ -1,9 +1,13 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Award, Star } from 'lucide-react';
+import { useNavigation } from '@/src/lib/useNavigation';
+import { type Locale } from '@/src/config/i18n';
 
 interface HallOfFamePageProps {
-  onNavigate: (page: string) => void;
+  lang: Locale;
 }
 
 type Legend = {
@@ -73,7 +77,8 @@ const legends: Legend[] = [
   },
 ];
 
-export function HallOfFamePage({ onNavigate }: HallOfFamePageProps) {
+export function HallOfFamePage({ lang }: HallOfFamePageProps) {
+  const onNavigate = useNavigation(lang);
   return (
     <div className="min-h-screen dark:bg-black light:bg-white">
       {/* Hero Section - Parallax */}

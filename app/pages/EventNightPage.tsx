@@ -1,12 +1,17 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Calendar, MapPin, Clock, Tv, Bell } from 'lucide-react';
+import { useNavigation } from '@/src/lib/useNavigation';
+import { type Locale } from '@/src/config/i18n';
 
 interface EventNightPageProps {
-  onNavigate: (page: string) => void;
+  lang: Locale;
 }
 
-export function EventNightPage({ onNavigate }: EventNightPageProps) {
+export function EventNightPage({ lang }: EventNightPageProps) {
+  const onNavigate = useNavigation(lang);
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,

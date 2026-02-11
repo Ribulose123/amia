@@ -1,9 +1,13 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Award, Play } from 'lucide-react';
+import { useNavigation } from '@/src/lib/useNavigation';
+import { type Locale } from '@/src/config/i18n';
 
 interface WinnersPageProps {
-  onNavigate: (page: string) => void;
+  lang: Locale;
 }
 
 type Winner = {
@@ -66,7 +70,8 @@ const winners: Winner[] = [
   },
 ];
 
-export function WinnersPage({ onNavigate }: WinnersPageProps) {
+export function WinnersPage({ lang }: WinnersPageProps) {
+  const onNavigate = useNavigation(lang);
   return (
     <div className="min-h-screen dark:bg-black light:bg-white">
       {/* Hero Section - Video */}

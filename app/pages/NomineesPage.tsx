@@ -1,11 +1,15 @@
+'use client';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Info, Play, X } from 'lucide-react';
 import { useLanguage } from '@/app/context/LanguageContext';
 import { MusicPlatformModal } from '@/components/MusicPlatformModal';
+import { useNavigation } from '@/src/lib/useNavigation';
+import { type Locale } from '@/src/config/i18n';
 
 interface NomineesPageProps {
-  onNavigate: (page: string) => void;
+  lang: Locale;
 }
 
 const nominees = [
@@ -101,7 +105,8 @@ const nominees = [
   },
 ];
 
-export function NomineesPage({ onNavigate }: NomineesPageProps) {
+export function NomineesPage({ lang }: NomineesPageProps) {
+  const onNavigate = useNavigation(lang);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [selectedNominee, setSelectedNominee] = useState<typeof nominees[0] | null>(null);

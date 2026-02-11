@@ -1,22 +1,7 @@
-"use client"
-
-import { useRouter } from "next/navigation"
-import { NewsPage } from "../pages/NewsPage"
+import { redirect } from "next/navigation"
+import { i18n } from "@/src/config/i18n"
 
 export default function News() {
-  const router = useRouter()
-  return <NewsPage onNavigate={(page: string) => {
-    const routes: Record<string, string> = {
-      home: "/",
-      categories: "/categories",
-      nominees: "/nominees",
-      winners: "/winners",
-      "hall-of-fame": "/hall-of-fame",
-      event: "/event",
-      news: "/news",
-      about: "/about",
-    }
-    router.push(routes[page] || "/")
-  }} />
+  redirect(`/${i18n.defaultLocale}/news`)
 }
 

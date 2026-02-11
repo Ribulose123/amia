@@ -7,9 +7,10 @@ import { useTheme } from '@/app/context/ThemeContext';
 interface AMIANavigationProps {
   currentPage: string;
   onNavigate: (page: string) => void;
+  languageSwitcher?: React.ReactNode;
 }
 
-export function AMIANavigation({ currentPage, onNavigate }: AMIANavigationProps) {
+export function AMIANavigation({ currentPage, onNavigate, languageSwitcher }: AMIANavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
@@ -205,50 +206,52 @@ export function AMIANavigation({ currentPage, onNavigate }: AMIANavigationProps)
               </button>
 
               {/* Language Selector */}
-              <div className="relative">
-                <button
-                  onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-                  className="flex items-center gap-2 px-4 py-2 dark:text-white/60 dark:hover:text-white light:text-black/60 light:hover:text-black transition-colors"
-                >
-                  <Globe className="w-4 h-4" />
-                  <span className="font-inter text-[14px] font-medium uppercase">
-                    {language}
-                  </span>
-                </button>
+              {languageSwitcher || (
+                <div className="relative">
+                  <button
+                    onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+                    className="flex items-center gap-2 px-4 py-2 dark:text-white/60 dark:hover:text-white light:text-black/60 light:hover:text-black transition-colors"
+                  >
+                    <Globe className="w-4 h-4" />
+                    <span className="font-inter text-[14px] font-medium uppercase">
+                      {language}
+                    </span>
+                  </button>
 
-                {/* Language Dropdown */}
-                <AnimatePresence>
-                  {showLanguageMenu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute top-full right-0 mt-2 dark:bg-black light:bg-white backdrop-blur-xl dark:border-white/10 light:border-black/10 border shadow-lg overflow-hidden min-w-[120px]"
-                    >
-                      {[
-                        { code: 'en', label: 'English' },
-                        { code: 'fr', label: 'Français' },
-                        { code: 'es', label: 'Español' },
-                      ].map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => {
-                            setLanguage(lang.code as 'en' | 'fr' | 'es');
-                            setShowLanguageMenu(false);
-                          }}
-                          className={`w-full px-4 py-3 text-left font-inter text-sm transition-colors ${
-                            language === lang.code
-                              ? 'bg-gradient-to-r from-[#6401CF] to-[#FF4350] text-white'
-                              : 'dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white light:text-black/70 light:hover:bg-black/5 light:hover:text-black'
-                          }`}
-                        >
-                          {lang.label}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                  {/* Language Dropdown */}
+                  <AnimatePresence>
+                    {showLanguageMenu && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute top-full right-0 mt-2 dark:bg-black light:bg-white backdrop-blur-xl dark:border-white/10 light:border-black/10 border shadow-lg overflow-hidden min-w-[120px]"
+                      >
+                        {[
+                          { code: 'en', label: 'English' },
+                          { code: 'fr', label: 'Français' },
+                          { code: 'es', label: 'Español' },
+                        ].map((lang) => (
+                          <button
+                            key={lang.code}
+                            onClick={() => {
+                              setLanguage(lang.code as 'en' | 'fr' | 'es');
+                              setShowLanguageMenu(false);
+                            }}
+                            className={`w-full px-4 py-3 text-left font-inter text-sm transition-colors ${
+                              language === lang.code
+                                ? 'bg-gradient-to-r from-[#6401CF] to-[#FF4350] text-white'
+                                : 'dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white light:text-black/70 light:hover:bg-black/5 light:hover:text-black'
+                            }`}
+                          >
+                            {lang.label}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )}
 
               {/* CTA Button */}
               <button
@@ -276,50 +279,52 @@ export function AMIANavigation({ currentPage, onNavigate }: AMIANavigationProps)
               </button>
 
               {/* Mobile Language Selector */}
-              <div className="relative">
-                <button
-                  onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-                  className="flex items-center gap-1 px-2 py-2 dark:text-white/60 dark:hover:text-white light:text-black/60 light:hover:text-black transition-colors"
-                >
-                  <Globe className="w-5 h-5" />
-                  <span className="font-inter text-[13px] font-medium uppercase">
-                    {language}
-                  </span>
-                </button>
+              {languageSwitcher || (
+                <div className="relative">
+                  <button
+                    onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+                    className="flex items-center gap-1 px-2 py-2 dark:text-white/60 dark:hover:text-white light:text-black/60 light:hover:text-black transition-colors"
+                  >
+                    <Globe className="w-5 h-5" />
+                    <span className="font-inter text-[13px] font-medium uppercase">
+                      {language}
+                    </span>
+                  </button>
 
-                {/* Language Dropdown */}
-                <AnimatePresence>
-                  {showLanguageMenu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="absolute top-full right-0 mt-2 dark:bg-black light:bg-white backdrop-blur-xl dark:border-white/10 light:border-black/10 border shadow-lg overflow-hidden min-w-[120px] z-[70]"
-                    >
-                      {[
-                        { code: 'en', label: 'English' },
-                        { code: 'fr', label: 'Français' },
-                        { code: 'es', label: 'Español' },
-                      ].map((lang) => (
-                        <button
-                          key={lang.code}
-                          onClick={() => {
-                            setLanguage(lang.code as 'en' | 'fr' | 'es');
-                            setShowLanguageMenu(false);
-                          }}
-                          className={`w-full px-4 py-3 text-left font-inter text-sm transition-colors ${
-                            language === lang.code
-                              ? 'bg-gradient-to-r from-[#6401CF] to-[#FF4350] text-white'
-                              : 'dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white light:text-black/70 light:hover:bg-black/5 light:hover:text-black'
-                          }`}
-                        >
-                          {lang.label}
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                  {/* Language Dropdown */}
+                  <AnimatePresence>
+                    {showLanguageMenu && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute top-full right-0 mt-2 dark:bg-black light:bg-white backdrop-blur-xl dark:border-white/10 light:border-black/10 border shadow-lg overflow-hidden min-w-[120px] z-[70]"
+                      >
+                        {[
+                          { code: 'en', label: 'English' },
+                          { code: 'fr', label: 'Français' },
+                          { code: 'es', label: 'Español' },
+                        ].map((lang) => (
+                          <button
+                            key={lang.code}
+                            onClick={() => {
+                              setLanguage(lang.code as 'en' | 'fr' | 'es');
+                              setShowLanguageMenu(false);
+                            }}
+                            className={`w-full px-4 py-3 text-left font-inter text-sm transition-colors ${
+                              language === lang.code
+                                ? 'bg-gradient-to-r from-[#6401CF] to-[#FF4350] text-white'
+                                : 'dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white light:text-black/70 light:hover:bg-black/5 light:hover:text-black'
+                            }`}
+                          >
+                            {lang.label}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )}
 
               {/* Mobile Menu Button */}
               <button

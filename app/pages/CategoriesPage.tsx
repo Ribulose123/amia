@@ -1,10 +1,14 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/app/context/LanguageContext';
+import { useNavigation } from '@/src/lib/useNavigation';
+import { type Locale } from '@/src/config/i18n';
 
 interface CategoriesPageProps {
-  onNavigate: (page: string) => void;
+  lang: Locale;
 }
 
 const categories = [
@@ -94,7 +98,8 @@ const categories = [
   },
 ];
 
-export function CategoriesPage({ onNavigate }: CategoriesPageProps) {
+export function CategoriesPage({ lang }: CategoriesPageProps) {
+  const onNavigate = useNavigation(lang);
   const [selectedGenre, setSelectedGenre] = useState<string>('all');
 
   const genres = ['all', 'general', 'genre-specific'];

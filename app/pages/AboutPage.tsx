@@ -1,12 +1,17 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Award, Globe, Heart, Users } from 'lucide-react';
+import { useNavigation } from '@/src/lib/useNavigation';
+import { type Locale } from '@/src/config/i18n';
 
 interface AboutPageProps {
-  onNavigate: (page: string) => void;
+  lang: Locale;
 }
 
-export function AboutPage({ onNavigate }: AboutPageProps) {
+export function AboutPage({ lang }: AboutPageProps) {
+  const onNavigate = useNavigation(lang);
   return (
     <div className="min-h-screen dark:bg-black light:bg-white">
       {/* Hero Section */}
