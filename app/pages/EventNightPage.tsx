@@ -77,7 +77,7 @@ function HeroSection() {
           className="w-full h-full object-cover"
         >
           <source
-            src="https://cdn.coverr.co/videos/coverr-stage-lights-and-smoke-5737/1080p.mp4"
+            src="/video/Landing video.MP4"
             type="video/mp4"
           />
         </video>

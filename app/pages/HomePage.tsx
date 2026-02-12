@@ -94,25 +94,27 @@ function VideoHero({ imageLoaded, setImageLoaded, onNavigate }: { imageLoaded: b
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   return (
-    <section ref={heroRef} className="relative h-screen bg-black">
+    <section ref={heroRef} className="relative h-screen bg-black overflow-hidden">
       {/* Background Video with Parallax - AMI Logo Video */}
       <motion.div 
         style={{ y }}
-        className="absolute top-20 left-0 right-0 bottom-0 z-0"
+        className="absolute top-0 left-0 right-0 bottom-0 z-0 flex items-center justify-center"
       >
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
           onLoadedData={() => setImageLoaded(true)}
         >
           <source
-            src="/video/AMI Awards 2026 Logo.mp4"
+            src="/video/Landing video.MP4"
             type="video/mp4"
           />
         </video>
+        {/* Dark overlay for better text readability on mobile */}
+        <div className="absolute inset-0 bg-black/30 lg:bg-transparent" />
       </motion.div>
 
       {/* Content Overlay - BEFORE image loads */}
@@ -123,25 +125,25 @@ function VideoHero({ imageLoaded, setImageLoaded, onNavigate }: { imageLoaded: b
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="absolute inset-0 z-10 flex items-center justify-center px-6 pt-20 pointer-events-none"
+            className="absolute inset-0 z-10 flex items-center justify-center px-4 sm:px-6 pt-20 pb-20 pointer-events-none"
           >
-            <div className="text-center max-w-4xl pointer-events-auto">
+            <div className="text-center max-w-4xl pointer-events-auto w-full">
               {/* Title */}
-              <h1 className="font-raleway text-6xl sm:text-7xl lg:text-9xl text-white leading-[0.9] tracking-tighter font-black mb-8">
+              <h1 className="font-raleway text-4xl sm:text-6xl lg:text-9xl text-white leading-[0.9] tracking-tighter font-black mb-6 sm:mb-8">
                 <span className="bg-gradient-to-r from-[#6401CF] to-[#FF4350] bg-clip-text text-transparent">
                   AMI 2026
                 </span>
               </h1>
 
               {/* Date badge */}
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 mb-8">
-                <span className="date-badge-text font-oswald text-sm tracking-widest font-semibold">
+              <div className="inline-flex items-center gap-2 px-4 py-2 sm:px-6 sm:py-3 bg-white/10 backdrop-blur-md border border-white/20 mb-6 sm:mb-8">
+                <span className="date-badge-text font-oswald text-xs sm:text-sm tracking-widest font-semibold">
                   {t('hero.date')}
                 </span>
               </div>
 
               {/* Subtitle */}
-              <p className="font-inter text-lg sm:text-xl text-white/80 mb-12 leading-relaxed">
+              <p className="font-inter text-base sm:text-lg lg:text-xl text-white/80 mb-8 sm:mb-12 leading-relaxed px-2">
                 {t('hero.tagline')}
               </p>
 
@@ -158,9 +160,9 @@ function VideoHero({ imageLoaded, setImageLoaded, onNavigate }: { imageLoaded: b
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="absolute inset-0 z-10 flex items-end justify-start px-6 lg:px-12 pb-32 pointer-events-none"
+            className="absolute inset-0 z-10 flex items-center justify-center lg:items-end lg:justify-start px-4 sm:px-6 lg:px-12 pb-20 lg:pb-32 pointer-events-none"
           >
-            <div className="max-w-2xl pointer-events-auto">
+            <div className="max-w-2xl pointer-events-auto w-full text-center lg:text-left">
               {/* Title - Reduced, smaller on mobile */}
               <h1 className="font-raleway text-3xl sm:text-4xl lg:text-6xl text-white leading-[0.95] tracking-tighter font-black mb-4 lg:mb-6">
                 <span className="bg-gradient-to-r from-[#6401CF] to-[#FF4350] bg-clip-text text-transparent">
@@ -175,8 +177,8 @@ function VideoHero({ imageLoaded, setImageLoaded, onNavigate }: { imageLoaded: b
                 </span>
               </div>
 
-              {/* Subtitle - Hidden on mobile for more viewing space */}
-              <p className="hidden lg:block font-inter text-base text-white/70 leading-relaxed max-w-lg">
+              {/* Subtitle - Show on mobile but smaller */}
+              <p className="text-sm sm:text-base lg:text-base text-white/70 leading-relaxed max-w-lg mx-auto lg:mx-0">
                 {t('hero.tagline')}
               </p>
             </div>
@@ -355,7 +357,7 @@ function ImageInterlude({ imageUrl, translationKey }: { imageUrl: string; transl
           className="w-full h-full object-cover"
         >
           <source
-            src="https://customer-ni6lq2zrs43owco7.cloudflarestream.com/f1d548990a547261b677a483da27c5a6/downloads/default.mp4"
+            src="/video/Landing video.MP4"
             type="video/mp4"
           />
         </video>
@@ -1687,7 +1689,7 @@ function FinalCTA({ onNavigate }: { onNavigate: (page: string) => void }) {
           className="w-full h-full object-cover"
         >
           <source
-            src="https://customer-ni6lq2zrs43owco7.cloudflarestream.com/f1d548990a547261b677a483da27c5a6/downloads/default.mp4"
+            src="/video/Landing video.MP4"
             type="video/mp4"
           />
         </video>

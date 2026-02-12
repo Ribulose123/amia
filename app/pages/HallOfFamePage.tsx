@@ -299,7 +299,7 @@ function NominationCTA({ onNavigate }: { onNavigate: (page: string) => void }) {
           className="w-full h-full object-cover"
         >
           <source
-            src="https://cdn.coverr.co/videos/coverr-concert-crowd-with-hands-in-the-air-5301/1080p.mp4"
+            src="/video/Landing video.MP4"
             type="video/mp4"
           />
         </video>
