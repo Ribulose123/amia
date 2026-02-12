@@ -10,7 +10,7 @@ export function createNavigationHandler(lang: Locale) {
       home: `/${lang}`,
       categories: `/${lang}/categories`,
       nominees: `/${lang}/nominees`,
-      winners: `/${lang}/winners`,
+      jury: `/${lang}/jury`,
       'hall-of-fame': `/${lang}/hall-of-fame`,
       event: `/${lang}/event`,
       news: `/${lang}/news`,
@@ -31,7 +31,8 @@ export function getCurrentPageFromPathname(pathname: string): string {
   if (pathWithoutLang === '/' || pathWithoutLang === '') return 'home';
   if (pathWithoutLang.startsWith('/categories')) return 'categories';
   if (pathWithoutLang.startsWith('/nominees')) return 'nominees';
-  if (pathWithoutLang.startsWith('/winners')) return 'winners';
+  if (pathWithoutLang.startsWith('/jury')) return 'jury';
+  if (pathWithoutLang.startsWith('/winners')) return 'jury'; // Legacy support
   if (pathWithoutLang.startsWith('/hall-of-fame')) return 'hall-of-fame';
   if (pathWithoutLang.startsWith('/event')) return 'event';
   if (pathWithoutLang.startsWith('/news')) return 'news';

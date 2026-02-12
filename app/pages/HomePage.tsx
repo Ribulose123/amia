@@ -95,7 +95,7 @@ function VideoHero({ imageLoaded, setImageLoaded, onNavigate }: { imageLoaded: b
 
   return (
     <section ref={heroRef} className="relative h-screen bg-black">
-      {/* Background Video with Parallax - Always visible */}
+      {/* Background Video with Parallax - AMI Logo Video */}
       <motion.div 
         style={{ y }}
         className="absolute top-20 left-0 right-0 bottom-0 z-0"
@@ -109,7 +109,7 @@ function VideoHero({ imageLoaded, setImageLoaded, onNavigate }: { imageLoaded: b
           onLoadedData={() => setImageLoaded(true)}
         >
           <source
-            src="https://customer-ni6lq2zrs43owco7.cloudflarestream.com/f1d548990a547261b677a483da27c5a6/downloads/default.mp4"
+            src="/video/AMI Awards 2026 Logo.mp4"
             type="video/mp4"
           />
         </video>

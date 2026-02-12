@@ -57,17 +57,17 @@ export function AMIANavigation({ currentPage, onNavigate, languageSwitcher }: AM
   const navLinks = [
     { id: 'home', label: 'Home' },
     { id: 'categories', label: 'Categories' },
-    { id: 'news', label: 'News' },
+    { id: 'news', label: 'News and Updates' },
     { id: 'about', label: 'About' },
   ];
 
   const artistsDropdownItems = [
-    { id: 'nominees', label: 'Nominees' },
-    { id: 'winners', label: 'Winners' },
-    { id: 'hall-of-fame', label: 'Hall of Fame' },
+    { id: 'nominees', translationKey: 'nav.nominees' },
+    { id: 'jury', translationKey: 'nav.jury' },
+    { id: 'hall-of-fame', translationKey: 'nav.hallOfFame' },
   ];
 
-  const isArtistsPageActive = ['nominees', 'winners', 'hall-of-fame'].includes(currentPage);
+  const isArtistsPageActive = ['nominees', 'jury', 'hall-of-fame'].includes(currentPage);
 
   return (
     <>
@@ -78,15 +78,29 @@ export function AMIANavigation({ currentPage, onNavigate, languageSwitcher }: AM
       >
         <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
-            {/* Logo - Minimal */}
+            {/* Logo */}
             <button
               onClick={() => {
                 onNavigate('home');
                 setIsMobileMenuOpen(false);
               }}
-              className="relative z-[70] font-raleway text-xl font-bold dark:text-white light:text-black hover:text-[#6401CF] transition-colors duration-300"
+              className="relative z-[70] flex items-center h-12 hover:opacity-80 transition-opacity duration-300"
             >
-              AMI
+              <img
+                src="/images/AMI_2026_Logo.png"
+                alt="AMI Logo"
+                className="h-full w-auto object-contain"
+                onError={(e) => {
+                  // If image fails to load, show text fallback
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'block';
+                }}
+              />
+              <span className="font-raleway text-xl font-bold dark:text-white light:text-black hidden">
+                AMI
+              </span>
             </button>
 
             {/* Desktop Navigation */}
@@ -158,7 +172,7 @@ export function AMIANavigation({ currentPage, onNavigate, languageSwitcher }: AM
                               : 'dark:text-white/70 dark:hover:bg-white/5 dark:hover:text-white light:text-black/70 light:hover:bg-black/5 light:hover:text-black'
                           }`}
                         >
-                          {item.label}
+                          {t(item.translationKey as any)}
                         </button>
                       ))}
                     </motion.div>
@@ -398,7 +412,7 @@ export function AMIANavigation({ currentPage, onNavigate, languageSwitcher }: AM
                         : 'dark:text-white/40 dark:hover:text-white light:text-black/40 light:hover:text-black'
                     }`}
                   >
-                    {item.label}
+                    {t(item.translationKey as any)}
                   </motion.button>
                 ))}
               </div>
@@ -420,7 +434,7 @@ export function AMIANavigation({ currentPage, onNavigate, languageSwitcher }: AM
                       : 'dark:text-white/40 dark:hover:text-white light:text-black/40 light:hover:text-black'
                   }`}
                 >
-                  {link.label}
+                  {t(`nav.${link.id}` as any)}
                 </motion.button>
               ))}
 

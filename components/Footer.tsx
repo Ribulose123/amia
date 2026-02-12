@@ -36,10 +36,10 @@ export function Footer({ onNavigate }: { onNavigate: (page: string) => void }) {
               </li>
               <li>
                 <button
-                  onClick={() => onNavigate('winners')}
+                  onClick={() => onNavigate('jury')}
                   className="dark:hover:text-white light:hover:text-black transition-colors"
                 >
-                  {t('nav.winners')}
+                  {t('nav.jury')}
                 </button>
               </li>
               <li>

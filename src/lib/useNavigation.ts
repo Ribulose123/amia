@@ -17,7 +17,7 @@ export function useNavigation(lang: Locale) {
         home: `/${lang}`,
         categories: `/${lang}/categories`,
         nominees: `/${lang}/nominees`,
-        winners: `/${lang}/winners`,
+        jury: `/${lang}/jury`,
         'hall-of-fame': `/${lang}/hall-of-fame`,
         event: `/${lang}/event`,
         news: `/${lang}/news`,
