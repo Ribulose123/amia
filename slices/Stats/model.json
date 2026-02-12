@@ -1,0 +1,35 @@
+{
+  "type": "Slice",
+  "fieldset": "Stats",
+  "description": "Statistics display with numbers, labels, and optional icons",
+  "icon": "bar_chart",
+  "display": "list",
+  "non-repeat": {},
+  "repeat": {
+    "number": {
+      "type": "KeyText",
+      "config": {
+        "label": "Number",
+        "placeholder": "1,000+"
+      }
+    },
+    "label": {
+      "type": "KeyText",
+      "config": {
+        "label": "Label",
+        "placeholder": "Awards Given"
+      }
+    },
+    "icon": {
+      "type": "Image",
+      "config": {
+        "label": "Icon (optional)",
+        "constraint": {
+          "width": 128,
+          "height": 128
+        }
+      }
+    }
+  }
+}
+

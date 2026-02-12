@@ -1,0 +1,43 @@
+{
+  "type": "Slice",
+  "fieldset": "Call to Action",
+  "description": "Call to action section with title, description, and button",
+  "icon": "campaign",
+  "display": "list",
+  "non-repeat": {
+    "title": {
+      "type": "KeyText",
+      "config": {
+        "label": "Title",
+        "placeholder": "Ready to get started?"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "label": "Description",
+        "placeholder": "Optional description text",
+        "allowTargetBlank": true,
+        "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+      }
+    },
+    "button_text": {
+      "type": "KeyText",
+      "config": {
+        "label": "Button Text",
+        "placeholder": "Get Started"
+      }
+    },
+    "button_link": {
+      "type": "Link",
+      "config": {
+        "label": "Button Link",
+        "select": "document",
+        "customtypes": ["page"],
+        "allowTargetBlank": true
+      }
+    }
+  },
+  "repeat": {}
+}
+

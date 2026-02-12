@@ -1,0 +1,37 @@
+{
+  "type": "Slice",
+  "fieldset": "Nominee Grid",
+  "description": "Grid display of nominees with images and details",
+  "icon": "grid_view",
+  "display": "list",
+  "non-repeat": {
+    "title": {
+      "type": "KeyText",
+      "config": {
+        "label": "Title",
+        "placeholder": "Featured Nominees"
+      }
+    },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "label": "Description",
+        "placeholder": "Optional description text",
+        "allowTargetBlank": true,
+        "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+      }
+    }
+  },
+  "repeat": {
+    "nominee": {
+      "type": "ContentRelationship",
+      "config": {
+        "label": "Nominee",
+        "select": "document",
+        "customtypes": ["nominee"],
+        "placeholder": "Select a nominee"
+      }
+    }
+  }
+}
+

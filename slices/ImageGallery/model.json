@@ -1,0 +1,43 @@
+{
+  "type": "Slice",
+  "fieldset": "Image Gallery",
+  "description": "Gallery of images with optional captions",
+  "icon": "photo_library",
+  "display": "list",
+  "non-repeat": {
+    "title": {
+      "type": "KeyText",
+      "config": {
+        "label": "Title",
+        "placeholder": "Gallery Title (optional)"
+      }
+    }
+  },
+  "repeat": {
+    "image": {
+      "type": "Image",
+      "config": {
+        "label": "Image",
+        "constraint": {
+          "width": 1200,
+          "height": 800
+        },
+        "thumbnails": [
+          {
+            "name": "thumbnail",
+            "width": 400,
+            "height": 267
+          }
+        ]
+      }
+    },
+    "caption": {
+      "type": "KeyText",
+      "config": {
+        "label": "Caption",
+        "placeholder": "Image caption (optional)"
+      }
+    }
+  }
+}
+
